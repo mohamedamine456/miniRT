@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 11:58:54 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/29 12:41:14 by mlachheb         ###   ########.fr       */
+/*   Updated: 2020/10/30 11:34:14 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ int							calculate_shadow(t_hited hited, t_object *obj,
 t_hited						calculate_shadow_helper(t_hited hited,
 		t_object *object, t_light *light, t_ray shad_ray);
 void						calculate_color_helper(t_calculate_color_data
-		*cc_data, t_hited hited, t_data_generate dg, t_light *lum);
+		*cc_data, t_hited hited, t_light *lum);
 
 /*
 ** keys_events.c prototypes
@@ -173,7 +173,7 @@ void						translate_vec(t_object *object, t_light *light,
 		int key, t_scene scene);
 void						translate_vec_light_cam(t_light *light,
 		t_vector *vt, t_scene scene);
-t_vector					calculate_trans_vec(int key, t_scene scene);
+t_vector					calculate_trans_vec(int key);
 void						rotation_vec(int key, t_object *object,
 		t_scene scene);
 

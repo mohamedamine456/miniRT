@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 13:16:58 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/29 16:43:00 by mlachheb         ###   ########.fr       */
+/*   Updated: 2020/10/30 09:40:11 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef struct					s_object
 	struct s_object	*next;
 }								t_object;
 
+/* ************************************************************************** */
 typedef struct					s_ray
 {
 	t_vector		origin;
@@ -202,7 +203,6 @@ typedef struct					s_scene
 
 typedef struct					s_image_header
 {
-	int				width_in_bytes;
 	int				file_size;
 	int				ofsset_bits;
 	int				width;

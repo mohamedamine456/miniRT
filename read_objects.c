@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 12:59:30 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/29 13:01:02 by mlachheb         ###   ########.fr       */
+/*   Updated: 2020/10/30 11:52:28 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void		read_sphere(char **table, t_object *object)
 {
+	if (table[1] == NULL || table[2] == NULL || table[3] == NULL)
+		ft_perror("must enter all data required for the Sphere");
 	if (object->shape == 0 && object->next == NULL)
 	{
 		object->id = 1;
@@ -37,6 +39,8 @@ void		read_sphere(char **table, t_object *object)
 
 void		read_plane(char **table, t_object *object)
 {
+	if (table[1] == NULL || table[2] == NULL || table[3] == NULL)
+		ft_perror("must enter all data required for the Plane");
 	if (object->shape == 0 && object->next == NULL)
 	{
 		object->id = 1;
@@ -60,6 +64,9 @@ void		read_plane(char **table, t_object *object)
 
 void		read_square(char **table, t_object *object)
 {
+	if (table[1] == NULL || table[2] == NULL ||
+			table[3] == NULL || table[4] == NULL)
+		ft_perror("must enter all data required for the Square");
 	if (object->shape == 0 && object->next == NULL)
 	{
 		object->id = 1;
@@ -85,6 +92,9 @@ void		read_square(char **table, t_object *object)
 
 void		read_cylindre(char **table, t_object *object)
 {
+	if (table[1] == NULL || table[2] == NULL || table[3] == NULL
+			|| table[4] == NULL || table[5] == NULL)
+		ft_perror("must enter all data required for the Cylinder");
 	if (object->shape == 0 && object->next == NULL)
 	{
 		object->id = 1;
@@ -112,6 +122,9 @@ void		read_cylindre(char **table, t_object *object)
 
 void		read_triangle(char **table, t_object *object)
 {
+	if (table[1] == NULL || table[2] == NULL || table[3] == NULL ||
+			table[4] == NULL)
+		ft_perror("must enter all data required for the Triangle");
 	if (object->shape == 0 && object->next == NULL)
 	{
 		object->id = 1;

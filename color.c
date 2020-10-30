@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 11:29:53 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/29 14:58:05 by mlachheb         ###   ########.fr       */
+/*   Updated: 2020/10/30 12:43:02 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_vector		calculate_color(t_hited hited, t_object *obj, t_scene scene)
 		lum = scene.light;
 		while (lum->intensite != -1)
 		{
-			calculate_color_helper(&cc, hited, scene.dg, lum);
+			calculate_color_helper(&cc, hited, lum);
 			if (lum->next != NULL)
 				lum = lum->next;
 			else
@@ -46,7 +46,7 @@ int				calculate_shadow(t_hited hited, t_object *obj, t_light *light)
 	t_ray		shad_ray;
 	t_hited		hit_shape;
 
-	shad_ray.origin = vec_plus(hited.p, vec_initialize(0.001, 0.001, 0.001));
+	shad_ray.origin = vec_plus(hited.p, vec_initialize(0.01, 0.01, 0.01));
 	while (light->intensite != -1)
 	{
 		shad_ray.direction = vec_minus(light->origin, hited.p);
@@ -104,7 +104,7 @@ t_hited			calculate_shadow_helper(t_hited hited,
 }
 
 void			calculate_color_helper(t_calculate_color_data *cc,
-		t_hited hited, t_data_generate dg, t_light *lum)
+		t_hited hited, t_light *lum)
 {
 	cc->intensite = vec_multiple_n(lum->intensite, lum->color);
 	cc->ll = vec_minus(lum->origin, hited.p);

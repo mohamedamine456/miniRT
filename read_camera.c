@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 12:55:57 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/29 12:59:21 by mlachheb         ###   ########.fr       */
+/*   Updated: 2020/10/30 11:53:03 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void					read_cam(char **table, t_camera *cam)
 {
 	t_camera	*new_cam;
 
+	if (table[1] == NULL || table[2] == NULL || table[3] == NULL)
+		ft_perror("must enter all data required for the Camera");
 	if (cam->fov == -1 && cam->next == NULL && cam->previous == NULL)
 	{
 		cam->origin = chaine_to_vector(table[1] ? table[1] : "");
@@ -41,6 +43,8 @@ t_resolution			read_resolution(char **table)
 {
 	t_resolution resol;
 
+	if (table[1] == NULL || table[2] == NULL)
+		ft_perror("must enter all data required for the Resolution");
 	resol.width = ft_atof(table[1] ? table[1] : "");
 	resol.height = ft_atof(table[2] ? table[2] : "");
 	return (resol);
@@ -50,6 +54,8 @@ t_ambiante				read_ambiante(char **table)
 {
 	t_ambiante amb;
 
+	if (table[1] == NULL || table[2] == NULL)
+		ft_perror("must enter all data required for the Ambiante");
 	amb.ambiante = ft_atof(table[1] ? table[1] : "");
 	amb.color = chaine_to_vector(table[2] ? table[2] : "");
 	return (amb);
@@ -57,6 +63,8 @@ t_ambiante				read_ambiante(char **table)
 
 void					read_light(char **table, t_light *light)
 {
+	if (table[1] == NULL || table[2] == NULL || table[3] == NULL)
+		ft_perror("must enter all data required for the Light");
 	if (light->intensite == -1 && light->next == NULL)
 	{
 		light->origin = chaine_to_vector(table[1] ? table[1] : "");

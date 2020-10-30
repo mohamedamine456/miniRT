@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 16:43:20 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/29 17:29:45 by mlachheb         ###   ########.fr       */
+/*   Updated: 2020/10/30 11:33:30 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		translate_vec(t_object *object, t_light *light,
 	t_vector	vec_translation;
 
 	obj = object;
-	vec_translation = calculate_trans_vec(key, scene);
+	vec_translation = calculate_trans_vec(key);
 	if (obj->shape == 's' || obj->shape == 'q' || obj->shape ==
 			'c' || obj->shape == 'p')
 	{
@@ -64,7 +64,7 @@ void		translate_vec_light_cam(t_light *light,
 	}
 }
 
-t_vector	calculate_trans_vec(int key, t_scene scene)
+t_vector	calculate_trans_vec(int key)
 {
 	t_vector trans_vec;
 

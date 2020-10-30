@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 11:27:23 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/29 11:29:27 by mlachheb         ###   ########.fr       */
+/*   Updated: 2020/10/30 09:40:55 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ t_image_header		initialize_image_header(t_resolution resol)
 	ih.width = resol.width;
 	ih.height = resol.height;
 	ih.bit_count = 32;
-	ih.width_in_bytes = ((ih.width * ih.bit_count + 31) / 32) * 4;
-	ih.image_size = ih.width_in_bytes * ih.height;
+	ih.image_size = ih.width * ih.height * 4;
 	ih.bit_size = 40;
 	ih.ofsset_bits = 54;
 	ih.file_size = 54 + ih.image_size;
