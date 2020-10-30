@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 11:29:53 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/30 12:43:02 by mlachheb         ###   ########.fr       */
+/*   Updated: 2020/10/30 19:47:54 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int				calculate_shadow(t_hited hited, t_object *obj, t_light *light)
 		shad_ray.direction = vec_minus(light->origin, hited.p);
 		vec_normalize(&(shad_ray.direction));
 		hit_shape = calculate_shadow_helper(hited, obj, light, shad_ray);
-		if (hit_shape.yes == 1 && hit_shape.obj != hited.obj)
+		if (hit_shape.yes == 1 && hit_shape.obj != hited.obj &&
+				light->intensite > 0)
 			return (1);
 		if (light->next != NULL)
 			light = light->next;
@@ -75,26 +76,7 @@ t_hited			calculate_shadow_helper(t_hited hited,
 	obj = object;
 	while (obj->shape != 0)
 	{
-		if (obj->shape == 's')
-			if (hit_sphere(shad_ray, obj, &hit_shape)
-					&& hit_shape.t <= distance)
-				hit_shape.yes = 1;
-		if (obj->shape == 'p')
-			if (hit_plan(obj, shad_ray, &hit_shape)
-					&& hit_shape.t <= distance)
-				hit_shape.yes = 1;
-		if (obj->shape == 't')
-			if (hit_triangle(obj, shad_ray, &hit_shape)
-					&& hit_shape.t <= distance)
-				hit_shape.yes = 1;
-		if (obj->shape == 'c')
-			if (hit_cylindre(obj, shad_ray, &hit_shape)
-					&& hit_shape.t <= distance)
-				hit_shape.yes = 1;
-		if (obj->shape == 'q')
-			if (hit_square(obj, shad_ray, &hit_shape)
-					&& hit_shape.t <= distance)
-				hit_shape.yes = 1;
+		help_generate_shadows(shad_ray, obj, &hit_shape, distance);
 		if (obj->next != NULL)
 			obj = obj->next;
 		else

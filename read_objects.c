@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 12:59:30 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/30 11:52:28 by mlachheb         ###   ########.fr       */
+/*   Updated: 2020/10/30 19:43:42 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,20 +90,19 @@ void		read_square(char **table, t_object *object)
 	}
 }
 
-void		read_cylindre(char **table, t_object *object)
+void		read_cylindre(char **t, t_object *object)
 {
-	if (table[1] == NULL || table[2] == NULL || table[3] == NULL
-			|| table[4] == NULL || table[5] == NULL)
+	if (t[1] == NL || t[2] == NL || t[3] == NL || t[4] == NL || t[5] == NL)
 		ft_perror("must enter all data required for the Cylinder");
 	if (object->shape == 0 && object->next == NULL)
 	{
 		object->id = 1;
 		object->shape = 'c';
-		object->center = chaine_to_vector(table[1] ? table[1] : "");
-		object->normal = chaine_to_vector(table[2] ? table[2] : "");
-		object->diameter = ft_atof(table[3] ? table[3] : "");
-		object->heigth = ft_atof(table[4] ? table[4] : "");
-		object->color = chaine_to_vector(table[5] ? table[5] : "");
+		object->center = chaine_to_vector(t[1] ? t[1] : "");
+		object->normal = chaine_to_vector(t[2] ? t[2] : "");
+		object->color = chaine_to_vector(t[3] ? t[3] : "");
+		object->diameter = ft_atof(t[3] ? t[3] : "");
+		object->heigth = ft_atof(t[5] ? t[5] : "");
 	}
 	else
 	{
@@ -112,11 +111,11 @@ void		read_cylindre(char **table, t_object *object)
 		object->next->id = object->id + 1;
 		object = object->next;
 		object->shape = 'c';
-		object->center = chaine_to_vector(table[1] ? table[1] : "");
-		object->normal = chaine_to_vector(table[2] ? table[2] : "");
-		object->color = chaine_to_vector(table[3] ? table[3] : "");
-		object->diameter = ft_atof(table[4] ? table[4] : "");
-		object->heigth = ft_atof(table[5] ? table[5] : "");
+		object->center = chaine_to_vector(t[1] ? t[1] : "");
+		object->normal = chaine_to_vector(t[2] ? t[2] : "");
+		object->color = chaine_to_vector(t[3] ? t[3] : "");
+		object->diameter = ft_atof(t[4] ? t[4] : "");
+		object->heigth = ft_atof(t[5] ? t[5] : "");
 	}
 }
 

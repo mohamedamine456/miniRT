@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 11:58:54 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/30 11:34:14 by mlachheb         ###   ########.fr       */
+/*   Updated: 2020/10/30 20:40:05 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MINIRT_H
 
 # include "structs.h"
+# define NL NULL
 
 /*
 ** read_scene.c prototypes
@@ -73,6 +74,12 @@ int							vec_compare(t_vector vec, t_vector a, t_vector b);
 
 t_vector					color_generate(t_ray ray, t_scene scene);
 t_hited						initialize_hited();
+void						help_generate_rays(t_ray ray,
+		t_object *obj, t_hited *hited);
+void						help_generate_shadows(t_ray shad_ray, t_object *obj,
+		t_hited *hit_shape, float distance);
+void						camera_rotation_helper(t_scene scene,
+		t_data_generate dg, int key);
 
 /*
 ** sphere.c prototypes
@@ -144,6 +151,7 @@ void						key_generate_second(int key, t_scene *scene);
 void						generate_selected_item(int key, t_scene *scene);
 void						camera_rotation(t_scene scene, t_data_generate dg,
 		int key);
+void						key_generate_cont(int key, t_scene *scene);
 
 /*
 ** read_camera.c prototypes
@@ -176,6 +184,8 @@ void						translate_vec_light_cam(t_light *light,
 t_vector					calculate_trans_vec(int key);
 void						rotation_vec(int key, t_object *object,
 		t_scene scene);
+void						rotation_vec_cont(int key, t_object *obj,
+		t_scene scene);
 
 /*
 ** error_manage.x prototypes
@@ -200,4 +210,7 @@ int							close_window(int key, t_scene *scene);
 void						save_bmp_file(t_scene scene);
 t_image_header				initialize_image_header(t_resolution resol);
 char						*reverse_image_file(char *buff, t_image_header ih);
+void						swap_for_file(char *buff, t_image_header ih,
+		int row, int col);
+
 #endif

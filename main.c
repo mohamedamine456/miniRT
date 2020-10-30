@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 15:32:11 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/30 10:00:22 by mlachheb         ###   ########.fr       */
+/*   Updated: 2020/10/30 19:59:17 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ int		main(int argv, char **args)
 
 int		close_window(int key, t_scene *scene)
 {
-	//key = 0;
-	//scene->cam->fov = 0;
 	exit(1);
 	return (0);
 }

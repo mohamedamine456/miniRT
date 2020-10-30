@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 11:27:23 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/30 09:40:55 by mlachheb         ###   ########.fr       */
+/*   Updated: 2020/10/30 17:35:13 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,6 @@ char				*reverse_image_file(char *buff, t_image_header ih)
 {
 	int		row;
 	int		col;
-	int		pos1;
-	int		pos2;
-	char	c;
 
 	row = 0;
 	while (row < ih.height / 2)
@@ -70,20 +67,30 @@ char				*reverse_image_file(char *buff, t_image_header ih)
 		col = 0;
 		while (col < ih.width)
 		{
-			pos1 = (row * ih.width + col) * 4;
-			pos2 = ((ih.height - 1 - row) * ih.width + col) * 4;
-			c = buff[pos1 + 2];
-			buff[pos1 + 2] = buff[pos2 + 2];
-			buff[pos2 + 2] = c;
-			c = buff[pos1 + 1];
-			buff[pos1 + 1] = buff[pos2 + 1];
-			buff[pos2 + 1] = c;
-			c = buff[pos1];
-			buff[pos1] = buff[pos2];
-			buff[pos2] = c;
+			swap_for_file(buff, ih, row, col);
 			col++;
 		}
 		row++;
 	}
 	return (buff);
+}
+
+void				swap_for_file(char *buff, t_image_header ih,
+		int row, int col)
+{
+	int		pos1;
+	int		pos2;
+	char	c;
+
+	pos1 = (row * ih.width + col) * 4;
+	pos2 = ((ih.height - 1 - row) * ih.width + col) * 4;
+	c = buff[pos1 + 2];
+	buff[pos1 + 2] = buff[pos2 + 2];
+	buff[pos2 + 2] = c;
+	c = buff[pos1 + 1];
+	buff[pos1 + 1] = buff[pos2 + 1];
+	buff[pos2 + 1] = c;
+	c = buff[pos1];
+	buff[pos1] = buff[pos2];
+	buff[pos2] = c;
 }

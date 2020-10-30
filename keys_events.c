@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 11:30:53 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/29 11:37:05 by mlachheb         ###   ########.fr       */
+/*   Updated: 2020/10/30 20:41:12 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ int					key_generate(int key, t_scene *scene)
 		mlx_put_image_to_window(scene->window.mlx_ptr,
 				scene->window.win_ptr, scene->window.img_ptr, 0, 0);
 	}
+	key_generate_cont(key, scene);
+	key_generate_second(key, scene);
+	return (0);
+}
+
+void				key_generate_cont(int key, t_scene *scene)
+{
 	if (key == 7 || key == 16 || key == 6)
 	{
 		if (scene->selected == 'q' || scene->selected == 'c' ||
@@ -44,8 +51,9 @@ int					key_generate(int key, t_scene *scene)
 		if (scene->selected == 'a')
 			camera_rotation(*scene, scene->dg, key);
 	}
-	key_generate_second(key, scene);
-	return (0);
+	if (key == 1 || key == 14 || key == 17 ||
+			key == 12 || key == 15 || key == 8 || key == 37)
+		generate_selected_item(key, scene);
 }
 
 void				key_generate_second(int key, t_scene *scene)
@@ -74,9 +82,6 @@ void				key_generate_second(int key, t_scene *scene)
 					scene->window.win_ptr, scene->window.img_ptr, 0, 0);
 		}
 	}
-	if (key == 1 || key == 14 || key == 17 ||
-			key == 12 || key == 15 || key == 8 || key == 37)
-		generate_selected_item(key, scene);
 }
 
 void				generate_selected_item(int key, t_scene *scene)
@@ -109,19 +114,7 @@ void				camera_rotation(t_scene scene, t_data_generate dg, int key)
 			dg.y = 0;
 			while (dg.y < scene.resol.height)
 			{
-				dg.r.origin = scene.cam->origin;
-				dg.r.direction.x = dg.x - (scene.resol.width / 2);
-				dg.r.direction.y = dg.y - (scene.resol.height / 2);
-				dg.r.direction.z = scene.cam->normal.z * scene.resol.width
-					/ (2 * tan((scene.cam->fov * M_PI) / 360));
-				vec_normalize(&(dg.r.direction));
-				dg.r.direction = apply_rotation(dg.r.direction, key, scene.cam);
-				dg.color = color_generate(dg.r, scene);
-				dg.pos = (dg.x + (scene.resol.height - 1 - dg.y)
-						* scene.resol.width) * 4;
-				scene.window.img_add[dg.pos + 2] = (char)dg.color.x;
-				scene.window.img_add[dg.pos + 1] = (char)dg.color.y;
-				scene.window.img_add[dg.pos] = (char)dg.color.z;
+				camera_rotation_helper(scene, dg, key);
 				dg.y++;
 			}
 			dg.x++;

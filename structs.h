@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 13:16:58 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/30 09:40:11 by mlachheb         ###   ########.fr       */
+/*   Updated: 2020/10/30 14:34:08 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ typedef struct					s_object
 	struct s_object	*next;
 }								t_object;
 
-/* ************************************************************************** */
 typedef struct					s_ray
 {
 	t_vector		origin;
