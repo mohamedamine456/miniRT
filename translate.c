@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 16:43:20 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/30 19:58:39 by mlachheb         ###   ########.fr       */
+/*   Updated: 2020/10/31 13:14:04 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void		rotation_vec(int key, t_object *object, t_scene scene)
 				obj->normal = vec_initialize(0, 0, 1);
 		}
 		if (obj->shape == 'p' && obj->shape == scene.selected)
-			rotation_vec_cont(key, obj, scene);
+			rotation_vec_cont(key, obj);
 		if (obj->next != NULL)
 			obj = obj->next;
 		else
@@ -109,7 +109,7 @@ void		rotation_vec(int key, t_object *object, t_scene scene)
 	}
 }
 
-void		rotation_vec_cont(int key, t_object *obj, t_scene scene)
+void		rotation_vec_cont(int key, t_object *obj)
 {
 	if (key == 7)
 		obj->normal = vec_initialize(-1, 0, 0);

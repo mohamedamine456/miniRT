@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 11:58:54 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/30 20:40:05 by mlachheb         ###   ########.fr       */
+/*   Updated: 2020/10/31 13:13:34 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,8 +184,7 @@ void						translate_vec_light_cam(t_light *light,
 t_vector					calculate_trans_vec(int key);
 void						rotation_vec(int key, t_object *object,
 		t_scene scene);
-void						rotation_vec_cont(int key, t_object *obj,
-		t_scene scene);
+void						rotation_vec_cont(int key, t_object *obj);
 
 /*
 ** error_manage.x prototypes
@@ -201,7 +200,7 @@ void						ft_perror(char *s);
 **main.c prototypes
 */
 
-int							close_window(int key, t_scene *scene);
+int							close_window();
 
 /*
 **	bmp_file_save.c prototypes

@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 11:41:33 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/30 20:05:07 by mlachheb         ###   ########.fr       */
+/*   Updated: 2020/10/31 10:10:44 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_vector						apply_rotation(t_vector direction,
 	float		angle;
 
 	angle = cam->rotation_angle;
-	if ((key == 7 && cam->axe == 'z'))
+	if (key == 7 && cam->axe == 'z')
 	{
 		new_direction.x = direction.x;
 		new_direction.y = direction.y * cos(angle) - direction.z * sin(angle);

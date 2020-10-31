@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 15:32:11 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/30 19:59:17 by mlachheb         ###   ########.fr       */
+/*   Updated: 2020/10/31 13:23:25 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,18 @@ int		main(int argv, char **args)
 		if (argv == 3 && !ft_strcmp(args[2], "--save"))
 		{
 			save_bmp_file(scene);
-			close_window(0, &scene);
+			close_window();
 		}
 		mlx_key_hook(scene.window.win_ptr, key_generate, &scene);
 		mlx_hook(scene.window.win_ptr, 17, 1L << 2, close_window, &scene);
 		mlx_loop(scene.window.mlx_ptr);
 	}
+	if (argv == 1)
+		ft_perror("choose a scene file");
 	return (0);
 }
 
-int		close_window(int key, t_scene *scene)
+int		close_window(void)
 {
 	exit(1);
 	return (0);
