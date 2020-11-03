@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 11:27:23 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/30 17:35:13 by mlachheb         ###   ########.fr       */
+/*   Updated: 2020/11/03 18:46:15 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,17 @@ void				save_bmp_file(t_scene scene)
 	char			header[54];
 
 	ih = initialize_image_header(scene.resol);
-	ft_memcpy(header, "BM", 2);
-	ft_memcpy(header + 2, &ih.file_size, 4);
-	ft_memcpy(header + 10, &ih.ofsset_bits, 4);
-	ft_memcpy(header + 14, &ih.bit_size, 4);
-	ft_memcpy(header + 18, &ih.width, 4);
-	ft_memcpy(header + 22, &ih.height, 4);
-	ft_memcpy(header + 26, &ih.bit_planes, 2);
-	ft_memcpy(header + 28, &ih.bit_count, 2);
-	ft_memcpy(header + 34, &ih.image_size, 4);
+	fill_header(ih, header);
 	buff = malloc(ih.image_size);
 	dg = dg_initialize(scene.cam);
 	apply_scene(scene, dg, buff);
 	buff = reverse_image_file(buff, ih);
-	fd = open("testtt.bmp", O_CREAT | O_RDWR);
+	fd = open("scene.bmp", O_CREAT | O_RDWR);
 	write(fd, header, 54);
 	write(fd, buff, ih.image_size);
 	close(fd);
 	free(buff);
+	close_window();
 }
 
 t_image_header		initialize_image_header(t_resolution resol)
@@ -54,6 +47,19 @@ t_image_header		initialize_image_header(t_resolution resol)
 	ih.file_size = 54 + ih.image_size;
 	ih.bit_planes = 1;
 	return (ih);
+}
+
+void				fill_header(t_image_header ih, char *header)
+{
+	ft_memcpy(header, "BM", 2);
+	ft_memcpy(header + 2, &ih.file_size, 4);
+	ft_memcpy(header + 10, &ih.ofsset_bits, 4);
+	ft_memcpy(header + 14, &ih.bit_size, 4);
+	ft_memcpy(header + 18, &ih.width, 4);
+	ft_memcpy(header + 22, &ih.height, 4);
+	ft_memcpy(header + 26, &ih.bit_planes, 2);
+	ft_memcpy(header + 28, &ih.bit_count, 2);
+	ft_memcpy(header + 34, &ih.image_size, 4);
 }
 
 char				*reverse_image_file(char *buff, t_image_header ih)

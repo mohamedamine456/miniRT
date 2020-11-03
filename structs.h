@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 13:16:58 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/30 14:34:08 by mlachheb         ###   ########.fr       */
+/*   Updated: 2020/11/03 18:11:06 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,5 +211,12 @@ typedef struct					s_image_header
 	int				image_size;
 	int				bit_count;
 }								t_image_header;
+
+typedef struct					s_data_check
+{
+	int			resol;
+	int			ambiante;
+	int			camera;
+}								t_data_check;
 
 #endif

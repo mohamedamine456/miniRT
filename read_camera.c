@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 12:55:57 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/30 14:57:36 by mlachheb         ###   ########.fr       */
+/*   Updated: 2020/10/31 19:43:45 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ t_resolution			read_resolution(char **table)
 		ft_perror("must enter all data required for the Resolution");
 	resol.width = ft_atof(table[1] ? table[1] : "");
 	resol.height = ft_atof(table[2] ? table[2] : "");
+	if (resol.width > 5120 / 2)
+		resol.width = 5120 / 2;
+	if (resol.height > 2880 / 2)
+		resol.height = 2880 / 2;
 	return (resol);
 }
 

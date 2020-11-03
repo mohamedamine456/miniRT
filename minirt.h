@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 11:58:54 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/31 13:13:34 by mlachheb         ###   ########.fr       */
+/*   Updated: 2020/11/03 18:46:33 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,8 +208,18 @@ int							close_window();
 
 void						save_bmp_file(t_scene scene);
 t_image_header				initialize_image_header(t_resolution resol);
+void						fill_header(t_image_header ih, char *header);
 char						*reverse_image_file(char *buff, t_image_header ih);
 void						swap_for_file(char *buff, t_image_header ih,
 		int row, int col);
+
+/*
+**check_file.c prototypes
+*/
+
+void						check_file(char *file_name);
+void						check_data(char *line, t_data_check *data);
+void						last_data_check(t_data_check data);
+t_data_check				initialize_data_check();
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mlachheb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 14:21:52 by mlachheb          #+#    #+#             */
-/*   Updated: 2020/10/30 14:51:47 by mlachheb         ###   ########.fr       */
+/*   Updated: 2020/11/03 17:17:58 by mlachheb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ t_scene			read_scene_file(char *file_name)
 	scene.light = light_init();
 	rs_data.light = scene.light;
 	while (get_next_line(fd, &line))
+	{
 		if (ft_strcmp(line, ""))
-		{
 			read_data(line, &scene, rs_data);
-			free(line);
-		}
+		free(line);
+	}
 	if (ft_strcmp(line, ""))
 		read_data(line, &scene, rs_data);
 	free(line);
